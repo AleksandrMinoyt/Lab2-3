@@ -9,9 +9,20 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <ToolBarTray Grid.Row="0" Grid.Column="0">
+        <Menu>
+            <MenuItem Header="Файл">
+                <MenuItem Header="Открыть" Click="MenuItem_Click"/>
+                <MenuItem Header="Сохранить" Click="MenuItem_Click_1"/>
+                <Separator/>
+                <MenuItem Header="Выход" Click="MenuItem_Click_2"/>
+            </MenuItem>
+
+        </Menu>
+
+        <ToolBarTray Grid.Row="1" Grid.Column="0">
             <ToolBar>
                 <ComboBox Margin="5" SelectedIndex="0" Width="150" SelectionChanged="ComboBox_SelectionChanged">
                     <TextBlock Text="Arial"/>
@@ -34,36 +45,36 @@
                 </Button>
                 <Separator/>
                 <Button Click="Button_Click_2">
-                 <Image Source="/Images/fontsizeDown.png" />
+                    <Image Source="/Images/fontsizeDown.png" />
 
                 </Button>
                 <Separator/>
             </ToolBar>
-            <ToolBar >                
-                    <Button Click="Button_Click_3">
-                        <Image Source="/Images/Bold.png" />
-                    </Button>
-                    <Separator/>
-                    <Button Click="Button_Click_1"  >
-                      <Image Source="/Images/italic.png" />
-                    </Button>
-                    <Separator/>
-                    <Button Click="Button_Click_4" >
-                        <Image Source="/Images/low.png" />
+            <ToolBar >
+                <Button Click="Button_Click_3">
+                    <Image Source="/Images/Bold.png" />
+                </Button>
+                <Separator/>
+                <Button Click="Button_Click_1"  >
+                    <Image Source="/Images/italic.png" />
+                </Button>
+                <Separator/>
+                <Button Click="Button_Click_4" >
+                    <Image Source="/Images/low.png" />
 
-                    </Button>
-                    <Separator/>            
-                
+                </Button>
+                <Separator/>
+
             </ToolBar>
             <ToolBar>
                 <StackPanel>
                     <RadioButton Content="Чёрный" IsChecked="True" Click="RadioButton_Click"/>
                     <RadioButton Content="Красный" Click="RadioButton_Click"/>
                     <RadioButton Content="Синий" Click="RadioButton_Click" />
-                  
-                </StackPanel>    
-            </ToolBar>      
+
+                </StackPanel>
+            </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="Editor" Grid.Row="1" Grid.Column="0"   TextWrapping="Wrap" FontSize="8" FontFamily="Arial" ></TextBox>
+        <TextBox x:Name="Editor" Grid.Row="2" Grid.Column="0"   TextWrapping="Wrap" FontSize="8" FontFamily="Arial" ></TextBox>
     </Grid>
 </Window>

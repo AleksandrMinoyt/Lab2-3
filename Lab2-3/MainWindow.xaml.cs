@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace Lab2_3
 {
@@ -124,12 +126,35 @@ namespace Lab2_3
                         Editor.Foreground = Brushes.Blue;
                         break;
                     }
-
-            }
-
-            
-
-
+            }            
     }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Текстовые файлы (*.txt)|*.txt";
+
+            if(ofd.ShowDialog()==true)
+            {
+                Editor.Text = File.ReadAllText(ofd.FileName);
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "Текстовые файлы (*.txt)|*.txt";
+
+            if(sfd.ShowDialog()==true)
+            {
+                File.WriteAllText(sfd.FileName,Editor.Text);
+            }
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
