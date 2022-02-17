@@ -6,6 +6,20 @@
         xmlns:local="clr-namespace:Lab2_3"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
+    <Window.CommandBindings>
+        <CommandBinding Command="local:CommandList.Exit"  Executed="ExitExecuted"/>
+        <CommandBinding Command="Open"  Executed="OpenExecuted"/>
+        <CommandBinding Command="Save"  Executed="SaveExecuted"/>
+        <CommandBinding Command="local:CommandList.SelectColor"  Executed="SelectColorExecuted"/>
+        <CommandBinding Command="local:CommandList.FontUp"  Executed="FontUpExecuted"/>
+        <CommandBinding Command="local:CommandList.FontDown"  Executed="FontDownExecuted"/>
+        <CommandBinding Command="local:CommandList.FontBold"  Executed="FontBoldExecuted"/>
+        <CommandBinding Command="local:CommandList.FontItalic"  Executed="FontItalicExecuted"/>
+        <CommandBinding Command="local:CommandList.FontLow"  Executed="FontLowExecuted"/>      
+        
+    </Window.CommandBindings>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -14,10 +28,15 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="Файл">
-                <MenuItem Header="Открыть" Click="MenuItem_Click"/>
-                <MenuItem Header="Сохранить" Click="MenuItem_Click_1"/>
+                <MenuItem Header="Открыть" Command="Open" />
+                <MenuItem Header="Сохранить" Command="Save"/>
                 <Separator/>
-                <MenuItem Header="Выход" Click="MenuItem_Click_2"/>
+                <MenuItem Command="local:CommandList.Exit" />
+            </MenuItem>
+            <MenuItem Header="Правка">
+                <MenuItem Header="Копировать" Command="Copy" />
+                <MenuItem Header="Вставить" Command="Paste"/>
+
             </MenuItem>
 
         </Menu>
@@ -29,7 +48,7 @@
                     <TextBlock Text="Verdana"/>
                     <TextBlock Text="Times new roman"/>
                 </ComboBox>
-                <ComboBox x:Name="SelFntSize" Margin="5" SelectedIndex="0" Width="30" SelectionChanged="ComboBox_SelectionChanged_1">
+                <ComboBox x:Name="SelFntSize" Margin="5" SelectedIndex="0" Width="30"  SelectionChanged="ComboBox_SelectionChanged_1">
                     <TextBlock Text="8"/>
                     <TextBlock Text="10"/>
                     <TextBlock Text="12"/>
@@ -39,39 +58,38 @@
                     <TextBlock Text="20"/>
                     <TextBlock Text="22"/>
                 </ComboBox>
-                <Button Click="Button_Click">
+                <Button Command="local:CommandList.FontUp">
                     <Image Source="/Images/fontsizeUp.png" />
+                </Button> 
 
-                </Button>
                 <Separator/>
-                <Button Click="Button_Click_2">
+                <Button Command="local:CommandList.FontDown">
                     <Image Source="/Images/fontsizeDown.png" />
-
                 </Button>
+
                 <Separator/>
             </ToolBar>
             <ToolBar >
-                <Button Click="Button_Click_3">
+                <Separator/>
+                <Button Command="local:CommandList.FontBold">
                     <Image Source="/Images/Bold.png" />
                 </Button>
                 <Separator/>
-                <Button Click="Button_Click_1"  >
+                <Button Command="local:CommandList.FontItalic" >
                     <Image Source="/Images/italic.png" />
                 </Button>
                 <Separator/>
-                <Button Click="Button_Click_4" >
+                <Button Command="local:CommandList.FontLow">
                     <Image Source="/Images/low.png" />
-
                 </Button>
                 <Separator/>
 
             </ToolBar>
             <ToolBar>
                 <StackPanel>
-                    <RadioButton Content="Чёрный" IsChecked="True" Click="RadioButton_Click"/>
-                    <RadioButton Content="Красный" Click="RadioButton_Click"/>
-                    <RadioButton Content="Синий" Click="RadioButton_Click" />
-
+                    <RadioButton x:Name="RBBlack" Content="Чёрный" IsChecked="True" Command="local:CommandList.SelectColor"  />
+                    <RadioButton x:Name="RBRed" Content="Красный" Command="local:CommandList.SelectColor"/>
+                    <RadioButton x:Name="RBBlue" Content="Синий" Command="local:CommandList.SelectColor" />
                 </StackPanel>
             </ToolBar>
         </ToolBarTray>

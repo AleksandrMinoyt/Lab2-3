@@ -51,24 +51,69 @@ namespace Lab2_3
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        /********************/
+
+        private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Текстовые файлы (*.txt)|*.txt";
+
+            if (ofd.ShowDialog() == true)
+            {
+                Editor.Text = File.ReadAllText(ofd.FileName);
+            }
+        }
+
+        private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+
+            sfd.Filter = "Текстовые файлы (*.txt)|*.txt";
+
+            if (sfd.ShowDialog() == true)
+            {
+                File.WriteAllText(sfd.FileName, Editor.Text);
+            }
+        }
+
+        private void SelectColorExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (((sender as Window).FindName("RBBlack") as RadioButton).IsChecked == true)
+            {
+                Editor.Foreground = Brushes.Black;
+            }
+            if (((sender as Window).FindName("RBRed") as RadioButton).IsChecked == true)
+            {
+                Editor.Foreground = Brushes.Red;
+            }
+            if (((sender as Window).FindName("RBBlue") as RadioButton).IsChecked == true)
+            {
+                Editor.Foreground = Brushes.Blue;
+            }
+        }
+
+        private void FontUpExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             SelFntSize.SelectedIndex++;
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void FontDownExecuted(object sender, ExecutedRoutedEventArgs e)
         {
+
             if (SelFntSize.SelectedIndex > 0)
             {
                 SelFntSize.SelectedIndex--;
             }
+
         }
 
-
-
-        //FontWeight="Bold" TextDecorations="Underline" FontStyle="Italic"
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
+        private void FontBoldExecuted(object sender, ExecutedRoutedEventArgs e)
         {
 
             if (Editor.FontWeight == FontWeights.Bold)
@@ -81,7 +126,7 @@ namespace Lab2_3
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void FontItalicExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (Editor.FontStyle == FontStyles.Italic)
             {
@@ -93,7 +138,7 @@ namespace Lab2_3
             }
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
+        private void FontLowExecuted(object sender, ExecutedRoutedEventArgs e)
         {
             if (Editor.TextDecorations == TextDecorations.Underline)
             {
@@ -101,60 +146,8 @@ namespace Lab2_3
             }
             else
             {
-                Editor.TextDecorations  = TextDecorations.Underline;
+                Editor.TextDecorations = TextDecorations.Underline;
             }
-        }
-
-        private void RadioButton_Click(object sender, RoutedEventArgs e)
-        {
-            string color = (sender as RadioButton).Content.ToString();
-            
-            switch (color)
-            {
-               case "Чёрный":
-                    {
-                        Editor.Foreground = Brushes.Black;
-                        break;
-                    }
-                case "Красный":
-                    {
-                        Editor.Foreground = Brushes.Red;
-                        break;
-                    }
-                case "Синий":
-                    {
-                        Editor.Foreground = Brushes.Blue;
-                        break;
-                    }
-            }            
-    }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Текстовые файлы (*.txt)|*.txt";
-
-            if(ofd.ShowDialog()==true)
-            {
-                Editor.Text = File.ReadAllText(ofd.FileName);
-            }
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-
-            sfd.Filter = "Текстовые файлы (*.txt)|*.txt";
-
-            if(sfd.ShowDialog()==true)
-            {
-                File.WriteAllText(sfd.FileName,Editor.Text);
-            }
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }
