@@ -41,12 +41,12 @@ namespace Lab2_3
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cmb = sender as ComboBox;
-            TextBlock tb = cmb.SelectedItem as TextBlock;
+            string tb = cmb.SelectedItem as string;
 
             if (tb != null && Editor != null)
             {
 
-                Editor.FontSize = Convert.ToDouble(tb.Text);
+                Editor.FontSize = Convert.ToDouble(tb);
 
             }
         }
