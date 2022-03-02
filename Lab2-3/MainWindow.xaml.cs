@@ -30,10 +30,10 @@ namespace Lab2_3
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cmb = sender as ComboBox;
-            TextBlock tb = cmb.SelectedItem as TextBlock;
+            string tb = cmb.SelectedItem as string;
             if (tb != null && Editor != null)
             {
-                Editor.FontFamily = new FontFamily(tb.Text);
+                Editor.FontFamily = new FontFamily(tb);
             }
 
         }

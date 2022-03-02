@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2_3"
+       
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    
+    <Window.Resources>
+
+       
+        
+    </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="local:CommandList.Exit"  Executed="ExitExecuted"/>
         <CommandBinding Command="Open"  Executed="OpenExecuted"/>
@@ -43,11 +48,9 @@
 
         <ToolBarTray Grid.Row="1" Grid.Column="0">
             <ToolBar>
-                <ComboBox Margin="5" SelectedIndex="0" Width="150" SelectionChanged="ComboBox_SelectionChanged">
-                    <TextBlock Text="Arial"/>
-                    <TextBlock Text="Verdana"/>
-                    <TextBlock Text="Times new roman"/>
-                </ComboBox>
+                <ComboBox Margin="5" SelectedIndex="0" Width="150" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource fontsList}" /> 
+
+
                 <ComboBox x:Name="SelFntSize" Margin="5" SelectedIndex="0" Width="30"  SelectionChanged="ComboBox_SelectionChanged_1">
                     <TextBlock Text="8"/>
                     <TextBlock Text="10"/>
