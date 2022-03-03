@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctr ="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
+>
+
+    <Style x:Key="basedTheme">
+        <Setter Property="Control.Background" Value="#FF405F82"/>
+        <Setter Property="Control.FontSize"  Value="13"/>
+
+    </Style>
+
+
+    <Style x:Key="ToolBarTheme" BasedOn="{StaticResource basedTheme}">
+        
+
+    </Style>
+
+    <Style x:Key="RadioTheme" BasedOn="{StaticResource basedTheme}">
+        <Setter Property="RadioButton.Foreground"  Value="White"/>
+
+    </Style>
+
+    <Style x:Key="ToolBarTrayTheme" BasedOn="{StaticResource basedTheme}">
+       
+
+    </Style>
+
+    <Style x:Key="MenuTheme" BasedOn="{StaticResource basedTheme}">
+
+        <Setter Property="Menu.Foreground"  Value="White"/>
+    </Style>
+
+    <Style x:Key="TextBoxTheme" BasedOn="{StaticResource basedTheme}">
+       
+        <Setter Property="TextBlock.FontSize"  Value="20" ></Setter>
+        <Setter Property="TextBlock.TextWrapping"  Value="Wrap"></Setter>
+        <Setter Property="TextBlock.FontFamily"  Value="Arial"></Setter>
+        <Setter Property="TextBlock.Foreground"  Value="White"/>
+    </Style>
+    
+
+</ResourceDictionary>

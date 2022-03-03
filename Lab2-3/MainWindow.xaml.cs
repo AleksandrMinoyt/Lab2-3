@@ -25,8 +25,31 @@ namespace Lab2_3
         public MainWindow()
         {
             InitializeComponent();
+            ThemeChange(0);
         }
 
+
+        public void ThemeChange(int IndTheme)
+        {
+
+            Uri uri = new Uri("LightTheme.xaml", UriKind.Relative);
+            switch (IndTheme)
+            {
+                case 0: { uri = new Uri("LightTheme.xaml", UriKind.Relative); break; }
+                case 1: { uri = new Uri("DarkTheme.xaml", UriKind.Relative); break; }
+                default:
+                    { uri = new Uri("LightTheme.xaml", UriKind.Relative); break; }
+                    
+            }
+            Application.Current.Resources.Clear();
+
+            ResourceDictionary rd = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(rd);
+
+            uri = new Uri("Dict.xaml", UriKind.Relative);
+            rd = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.MergedDictionaries.Add(rd);
+        }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox cmb = sender as ComboBox;
@@ -52,7 +75,6 @@ namespace Lab2_3
         }
 
 
-        /********************/
 
         private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
         {
@@ -148,6 +170,22 @@ namespace Lab2_3
             {
                 Editor.TextDecorations = TextDecorations.Underline;
             }
+        }
+
+        private void SelectThemeExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+           
+
+            if (((sender as Window).FindName("RBWT") as RadioButton).IsChecked == true)
+            {
+                ThemeChange(0);
+            }
+            if (((sender as Window).FindName("RBDT") as RadioButton).IsChecked == true)
+            {
+                ThemeChange(1);
+            }
+
+
         }
     }
 }

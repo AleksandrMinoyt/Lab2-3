@@ -18,6 +18,8 @@ namespace Lab2_3
         public static RoutedCommand FontBold { get; set; }
         public static RoutedCommand FontItalic { get; set; }
         public static RoutedCommand FontLow { get; set; }
+        public static RoutedCommand SelectTheme { get; set; }
+      
 
 
         static CommandList()
@@ -30,11 +32,14 @@ namespace Lab2_3
             inputsSelectColor.Add(new KeyGesture(Key.X, ModifierKeys.Alt, "Alt+U"));
             SelectColor = new RoutedCommand("SelectColor", typeof(CommandList), inputsSelectColor);
 
+           
             FontUp = new RoutedCommand();
             FontDown = new RoutedCommand();
             FontBold = new RoutedCommand();
             FontItalic = new RoutedCommand();
             FontLow = new RoutedCommand();
+
+            SelectTheme = new RoutedCommand();
         }
 
 
