@@ -49,17 +49,19 @@ namespace Lab2_3
             uri = new Uri("Dict.xaml", UriKind.Relative);
             rd = Application.LoadComponent(uri) as ResourceDictionary;
             Application.Current.Resources.MergedDictionaries.Add(rd);
-        }
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cmb = sender as ComboBox;
-            string tb = cmb.SelectedItem as string;
-            if (tb != null && Editor != null)
-            {
-                Editor.FontFamily = new FontFamily(tb);
             }
+        //private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    ComboBox cmb = sender as ComboBox;
+        //    string tb = cmb.SelectedItem as string;
+        //    if (tb != null && Editor != null)
+        //    {
+        //        Editor.FontFamily = new FontFamily(tb);
+        //    }
 
-        }
+        //}
+
+        
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -122,15 +124,15 @@ namespace Lab2_3
 
         private void FontUpExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            SelFntSize.SelectedIndex++;
+            FontSize.SelectedIndex++;
         }
 
         private void FontDownExecuted(object sender, ExecutedRoutedEventArgs e)
         {
 
-            if (SelFntSize.SelectedIndex > 0)
+            if (FontSize.SelectedIndex > 0)
             {
-                SelFntSize.SelectedIndex--;
+                FontSize.SelectedIndex--;
             }
 
         }

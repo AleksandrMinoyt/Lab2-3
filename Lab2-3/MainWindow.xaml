@@ -44,10 +44,10 @@
 
         <ToolBarTray Grid.Row="1" Grid.Column="0" Style="{DynamicResource ToolBarTrayTheme}">
             <ToolBar Style="{DynamicResource ToolBarTheme}">
-                <ComboBox Margin="5" SelectedIndex="0" Width="150"  ItemsSource="{StaticResource fontsList}" />
+                <ComboBox Margin="5" SelectedIndex="0" Width="150"  ItemsSource="{StaticResource fontsList}"  Name="FontList" />
 
 
-                <ComboBox x:Name="SelFntSize" Margin="5" SelectedIndex="6" Width="30"  SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource sizeList}"/>
+                <ComboBox Name="FontSize" Margin="5" SelectedIndex="6" Width="30"   ItemsSource="{StaticResource sizeList}"/>
 
                 <Button Command="local:CommandList.FontUp">
                     <Image Source="/Images/fontsizeUp.png" />
@@ -91,6 +91,6 @@
             
             </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="Editor" Grid.Row="2" Grid.Column="0"    Style="{DynamicResource TextBoxTheme}" ></TextBox>
+        <TextBox x:Name="Editor" Grid.Row="2" Grid.Column="0" FontFamily="{Binding ElementName=FontList ,Path=Text}" FontSize="{Binding ElementName=FontSize ,Path=Text}" Style="{DynamicResource TextBoxTheme}" ></TextBox>
     </Grid>
 </Window>
